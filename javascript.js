@@ -1,19 +1,22 @@
 function fibs(num) {
-  const fibNums = [];
+  if (num <= 0) return;
+
+  const fibSeq = [];
+
   for (let i = 0; i < num; i++) {
-    if (i === 0) {
-      fibNums.push(0);
-      continue;
-    }
-    if (i === 1) {
-      fibNums.push(1);
-      continue;
-    }
-    fibNums.push(fibNums[i - 2] + fibNums[i - 1]);
+    i < 2 ? fibSeq.push(i) : fibSeq.push(fibSeq[i - 1] + fibSeq[i - 2]);
   }
-  return fibNums;
+  return fibSeq;
 }
 
-// fibs(8);
+function fibsRec(num) {
+  if (num <= 0) return;
+  if (num === 1) return [0];
+  if (num === 2) return [0, 1];
 
-function fibsRec(num) {}
+  const fibSeq = fibsRec(num - 1);
+
+  fibSeq.push(fibSeq[fibSeq.length - 1] + fibSeq[fibSeq.length - 2]);
+
+  return fibSeq.slice(0, num);
+}
