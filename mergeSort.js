@@ -11,19 +11,18 @@ function mergeSort(array) {
   const sorted = [];
   let i = 0;
   let j = 0;
-  let k = 0;
 
   while (i < firstHalf.length && j < secondHalf.length) {
     firstHalf[i] < secondHalf[j]
-      ? (sorted[k++] = firstHalf[i++])
-      : (sorted[k++] = secondHalf[j++]);
+      ? sorted.push(firstHalf[i++])
+      : sorted.push(secondHalf[j++]);
   }
 
   for (i; i < firstHalf.length; i++) {
-    sorted[k++] = firstHalf[i];
+    sorted.push(firstHalf[i]);
   }
   for (j; j < secondHalf.length; j++) {
-    sorted[k++] = secondHalf[j];
+    sorted.push(secondHalf[j]);
   }
 
   return sorted;
